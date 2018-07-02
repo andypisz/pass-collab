@@ -16,6 +16,18 @@ import {HttpClientModule} from '@angular/common/http';
 import {AuthService} from './services/auth.service';
 import {AuthGuardService} from './services/auth-guard.service';
 import {ContactService} from './services/contact.service';
+import {Routes} from '@angular/router';
+
+const appRoutes: Routes = [
+  { path: 'signin', component: SigninComponent },
+  { path: 'accueil', component: AccueilComponent },
+  { path: 'menu', component: MenuComponent },
+  { path: 'accueil/:id', component: SingleContactComponent },
+  { path: 'menu/vie-pratique', component: ViePratiqueComponent },
+  { path: 'menu/nos-clients', component: NosClientsComponent },
+  { path: 'menu/mon-profil', component: MonProfilComponent },
+  { path: 'menu/mon-profil/modifier', component: ProfilFormComponent }
+];
 
 @NgModule({
   declarations: [
