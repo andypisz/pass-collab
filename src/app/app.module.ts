@@ -16,17 +16,19 @@ import {HttpClientModule} from '@angular/common/http';
 import {AuthService} from './services/auth.service';
 import {AuthGuardService} from './services/auth-guard.service';
 import {ContactService} from './services/contact.service';
-import {Routes} from '@angular/router';
+import {RouterModule, Routes} from '@angular/router';
 
 const appRoutes: Routes = [
-  { path: 'signin', component: SigninComponent },
-  { path: 'accueil', component: AccueilComponent },
-  { path: 'menu', component: MenuComponent },
-  { path: 'accueil/:id', component: SingleContactComponent },
-  { path: 'menu/vie-pratique', component: ViePratiqueComponent },
-  { path: 'menu/nos-clients', component: NosClientsComponent },
-  { path: 'menu/mon-profil', component: MonProfilComponent },
-  { path: 'menu/mon-profil/modifier', component: ProfilFormComponent }
+  { path: 'connexion', component: SigninComponent },
+  { path: 'accueil', canActivate: [AuthGuardService], component: AccueilComponent },
+  { path: 'menu', canActivate: [AuthGuardService], component: MenuComponent },
+  { path: 'accueil/:id', canActivate: [AuthGuardService], component: SingleContactComponent },
+  { path: 'menu/vie-pratique', canActivate: [AuthGuardService], component: ViePratiqueComponent },
+  { path: 'menu/nos-clients', canActivate: [AuthGuardService], component: NosClientsComponent },
+  { path: 'menu/mon-profil', canActivate: [AuthGuardService], component: MonProfilComponent },
+  { path: 'menu/mon-profil/modifier', canActivate: [AuthGuardService], component: ProfilFormComponent },
+  { path: '', redirectTo: 'menu', pathMatch: 'full' },
+  { path: '**', redirectTo: 'menu' }
 ];
 
 @NgModule({
@@ -46,7 +48,8 @@ const appRoutes: Routes = [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [
     AuthService,
