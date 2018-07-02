@@ -11,6 +11,11 @@ import { ViePratiqueComponent } from './menu/vie-pratique/vie-pratique.component
 import { NosClientsComponent } from './menu/nos-clients/nos-clients.component';
 import { MonProfilComponent } from './menu/mon-profil/mon-profil.component';
 import { ProfilFormComponent } from './menu/mon-profil/profil-form/profil-form.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
+import {AuthService} from './services/auth.service';
+import {AuthGuardService} from './services/auth-guard.service';
+import {ContactService} from './services/contact.service';
 
 @NgModule({
   declarations: [
@@ -26,9 +31,16 @@ import { ProfilFormComponent } from './menu/mon-profil/profil-form/profil-form.c
     ProfilFormComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    AuthService,
+    AuthGuardService,
+    ContactService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
