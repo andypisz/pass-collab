@@ -22,7 +22,7 @@ export class ContactService {
   getContactById(id: number) {
     return new Promise(
       (resolve, reject) => {
-        firebase.database().ref('/contacts/' + id).once('value').then(
+        firebase.database().ref('/Contacts/' + id).once('value').then(
           (data: DataSnapshot) => {
             resolve(data.val());
           }, (error) => {
@@ -34,11 +34,11 @@ export class ContactService {
   }
 
   saveContactsToServer() {
-    firebase.database().ref('/contacts').set(this.contacts);
+    firebase.database().ref('/Contacts').set(this.contacts);
   }
 
   getContactsFromServer() {
-    firebase.database().ref('/contacts')
+    firebase.database().ref('/Contacts')
       .on('value', (data: DataSnapshot) => {
           this.contacts = data.val() ? data.val() : [];
           this.emitContactSubject();

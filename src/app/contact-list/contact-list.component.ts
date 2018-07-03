@@ -18,7 +18,6 @@ export class ContactListComponent implements OnInit, OnDestroy {
               private router: Router) { }
 
   ngOnInit() {
-    console.log('Nombre de contacts 2: ' + this.contacts.length);
     this.contactSubscription = this.contactsService.contactSubject.subscribe(
       (contacts: Contact[]) => {
         this.contacts = contacts;
