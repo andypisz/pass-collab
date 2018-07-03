@@ -1,7 +1,10 @@
 export class Contact {
+  agence: string;
+  bureau: string;
   prenom: string;
   nom: string;
-  telephone: string;
-  bureau: string;
+  photo: string;
   role: string;
+  telephone: string;
+  titre: string;
 }

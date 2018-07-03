@@ -1,3 +1,8 @@
-<p>
-  single-contact works!
-</p>
+<div class="row">
+  <div class="col-xs-12">
+    <img style="max-width:400px;" *ngIf="contact.photo" [src]="contact.photo">
+    <h1>{{ contact.title }}</h1>
+    <h3>{{ contact.prenom }} {{ contact.nom }}</h3>
+    <button class="btn btn-default" (click)="onBack()">Suivant</button>
+  </div>
+</div>

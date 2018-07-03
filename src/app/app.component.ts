@@ -22,7 +22,7 @@ export class AppComponent implements OnInit{
     );
   }
 
-  constructor(private authService: AuthService) {
+  constructor() {
     // Initialize Firebase
     const config = {
       apiKey: 'AIzaSyCSx6QE9DGo0CF3MoVOPaZZiXyehGN1fqI',

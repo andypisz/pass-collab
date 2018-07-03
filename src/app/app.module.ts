@@ -17,12 +17,14 @@ import {AuthService} from './services/auth.service';
 import {AuthGuardService} from './services/auth-guard.service';
 import {ContactService} from './services/contact.service';
 import {RouterModule, Routes} from '@angular/router';
+import { HeaderComponent } from './header/header.component';
 
 const appRoutes: Routes = [
   { path: 'connexion', component: SigninComponent },
   { path: 'accueil', canActivate: [AuthGuardService], component: AccueilComponent },
   { path: 'menu', canActivate: [AuthGuardService], component: MenuComponent },
-  { path: 'accueil/:id', canActivate: [AuthGuardService], component: SingleContactComponent },
+  { path: 'contacts', canActivate: [AuthGuardService], component: ContactListComponent },
+  { path: 'contacts/view/:id', canActivate: [AuthGuardService], component: SingleContactComponent },
   { path: 'menu/vie-pratique', canActivate: [AuthGuardService], component: ViePratiqueComponent },
   { path: 'menu/nos-clients', canActivate: [AuthGuardService], component: NosClientsComponent },
   { path: 'menu/mon-profil', canActivate: [AuthGuardService], component: MonProfilComponent },
@@ -42,7 +44,8 @@ const appRoutes: Routes = [
     ViePratiqueComponent,
     NosClientsComponent,
     MonProfilComponent,
-    ProfilFormComponent
+    ProfilFormComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
